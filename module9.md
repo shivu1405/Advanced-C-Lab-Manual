@@ -13,11 +13,80 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int stack[100];
+int top = -1;
+int n;
+
+void push(int x) {
+    if (top == n - 1) {
+        printf("Stack Overflow\n");
+        return;
+    }
+    top++;
+    stack[top] = x;
+}
+
+void pop() {
+    if (top == -1) {
+        printf("Stack Underflow\n");
+        return;
+    }
+    printf("Popped: %d\n", stack[top]);
+    top--;
+}
+
+void display() {
+    if (top == -1) {
+        printf("Stack is empty\n");
+        return;
+    }
+    for (int i = top; i >= 0; i--) {
+        printf("%d ", stack[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int choice, value;
+
+    printf("Enter stack size: ");
+    scanf("%d", &n);
+
+    while (1) {
+        printf("\n1.Push\n2.Pop\n3.Display\n4.Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 1) {
+            printf("Enter value: ");
+            scanf("%d", &value);
+            push(value);
+        } 
+        else if (choice == 2) {
+            pop();
+        } 
+        else if (choice == 3) {
+            display();
+        } 
+        else if (choice == 4) {
+            break;
+        } 
+        else {
+            printf("Invalid choice\n");
+        }
+    }
+
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
+<img width="1627" height="739" alt="image" src="https://github.com/user-attachments/assets/745ea68b-4a87-44e2-ba2d-c24ab7fea9c5" />
 
 
 
@@ -36,11 +105,42 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+float stack[100];
+int top = -1;
+int n;
+
+void push(float x) {
+    if (top == n - 1) {
+        printf("Stack Overflow\n");
+        return;
+    }
+    top++;
+    stack[top] = x;
+    printf("Pushed: %.2f\n", x);
+}
+
+int main() {
+    float value;
+
+    printf("Enter stack size: ");
+    scanf("%d", &n);
+
+    printf("Enter value to push: ");
+    scanf("%f", &value);
+
+    push(value);
+
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
+<img width="1629" height="733" alt="image" src="https://github.com/user-attachments/assets/1488dd14-313b-4c63-8e42-13df589f8fd6" />
 
 
 
@@ -62,11 +162,83 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int queue[100];
+int front = -1, rear = -1, n;
+
+void enqueue(int x) {
+    if (rear == n - 1) {
+        printf("Queue Overflow\n");
+        return;
+    }
+    if (front == -1) front = 0;
+    rear++;
+    queue[rear] = x;
+    printf("Enqueued: %d\n", x);
+}
+
+void dequeue() {
+    if (front == -1 || front > rear) {
+        printf("Queue Underflow\n");
+        return;
+    }
+    printf("Dequeued: %d\n", queue[front]);
+    front++;
+}
+
+void display() {
+    if (front == -1 || front > rear) {
+        printf("Queue is empty\n");
+        return;
+    }
+    printf("Queue elements: ");
+    for (int i = front; i <= rear; i++) {
+        printf("%d ", queue[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int choice, value;
+
+    printf("Enter queue size: ");
+    scanf("%d", &n);
+
+    while (1) {
+        printf("\n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 1) {
+            printf("Enter value to enqueue: ");
+            scanf("%d", &value);
+            enqueue(value);
+        } 
+        else if (choice == 2) {
+            dequeue();
+        } 
+        else if (choice == 3) {
+            display();
+        } 
+        else if (choice == 4) {
+            break;
+        } 
+        else {
+            printf("Invalid choice\n");
+        }
+    }
+
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
+<img width="1637" height="727" alt="image" src="https://github.com/user-attachments/assets/042f9fd2-d369-463b-8831-1a9e0ad92132" />
+
 
 
 Result:
@@ -86,11 +258,43 @@ Algorithm:
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+float queue[100];
+int front = -1, rear = -1, n;
+
+void enqueue(float x) {
+    if (rear == n - 1) {
+        printf("Queue Overflow\n");
+        return;
+    }
+    if (front == -1) front = 0;
+    rear++;
+    queue[rear] = x;
+    printf("Enqueued: %.2f\n", x);
+}
+
+int main() {
+    float value;
+
+    printf("Enter queue size: ");
+    scanf("%d", &n);
+
+    printf("Enter value to enqueue: ");
+    scanf("%f", &value);
+    enqueue(value);
+
+    return 0;
+}
+
+
+```
 
 Output:
 
-//paste your output here
+<img width="1641" height="740" alt="image" src="https://github.com/user-attachments/assets/e9c4bde0-381b-4972-85dd-fdff135d5367" />
+
 
 Result:
 Thus, the program to insert elements in queue using array is verified successfully.
@@ -121,11 +325,85 @@ o	After deletion, check if the front pointer has passed the rear pointer (front 
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int queue[100];
+int front = -1, rear = -1, n;
+
+void enqueue(int x) {
+    if (rear == n - 1) {
+        printf("Queue Overflow\n");
+        return;
+    }
+    if (front == -1) front = 0;
+    rear++;
+    queue[rear] = x;
+    printf("Enqueued: %d\n", x);
+}
+
+void dequeue() {
+    if (front == -1) {
+        printf("Queue is empty\n");
+        return;
+    }
+    printf("Deleted element: %d\n", queue[front]);
+    front++;
+    if (front > rear) {
+        front = rear = -1;
+    }
+}
+
+void display() {
+    if (front == -1) {
+        printf("Queue is empty\n");
+        return;
+    }
+    printf("Queue elements: ");
+    for (int i = front; i <= rear; i++) {
+        printf("%d ", queue[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int choice, value;
+
+    printf("Enter queue size: ");
+    scanf("%d", &n);
+
+    while (1) {
+        printf("\n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 1) {
+            printf("Enter value to enqueue: ");
+            scanf("%d", &value);
+            enqueue(value);
+        } 
+        else if (choice == 2) {
+            dequeue();
+        } 
+        else if (choice == 3) {
+            display();
+        } 
+        else if (choice == 4) {
+            break;
+        } 
+        else {
+            printf("Invalid choice\n");
+        }
+    }
+
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
+<img width="1650" height="735" alt="image" src="https://github.com/user-attachments/assets/7f99b5a6-5b44-4f63-9ffe-0ffe38328899" />
 
 
 Result:
