@@ -14,12 +14,47 @@ Algorithm:
 7.	Move to the next node using the next pointer.
  
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* head = NULL;
+
+void display() {
+    struct Node* p = head;
+    while (p != NULL) {
+        printf("%d ", p->data);
+        p = p->next;
+    }
+    printf("\n");
+}
+
+void push(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = head;
+    head = newNode;
+}
+
+int main() {
+    push(10);
+    push(20);
+    push(30);
+    display();
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
+<img width="1629" height="744" alt="image" src="https://github.com/user-attachments/assets/a12883dd-4ce8-43c8-a20d-585c9ba76026" />
+
 
 
 Result:
@@ -39,12 +74,59 @@ Algorithm:
 4.	Set head to point to the next node in the stack.
  
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* head = NULL;
+
+void push(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = head;
+    head = newNode;
+}
+
+void pop() {
+    if (head == NULL) {
+        printf("Stack is empty.\n");
+        return;
+    }
+    struct Node* temp = head;
+    head = head->next;
+    free(temp);
+    printf("Element popped.\n");
+}
+
+void display() {
+    struct Node* p = head;
+    while (p != NULL) {
+        printf("%d ", p->data);
+        p = p->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    push(10);
+    push(20);
+    push(30);
+    display();
+    pop();
+    display();
+    return 0;
+}
+
+```
 
 Output:
+<img width="1638" height="733" alt="image" src="https://github.com/user-attachments/assets/51ecfa2f-02ad-4e3a-8ebe-c38c6c0b26ce" />
 
-//paste your output here
 
 
 
@@ -64,11 +146,57 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* front = NULL;
+struct Node* rear = NULL;
+
+void enqueue(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+    if (rear == NULL) {
+        front = rear = newNode;
+        return;
+    }
+    rear->next = newNode;
+    rear = newNode;
+}
+
+void display() {
+    if (front == NULL) {
+        printf("Queue is empty.\n");
+        return;
+    }
+    struct Node* p = front;
+    while (p != NULL) {
+        printf("%d ", p->data);
+        p = p->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    display();
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
+<img width="1630" height="733" alt="image" src="https://github.com/user-attachments/assets/0e940eb8-0fe7-4ede-8948-4433fc0a5fba" />
+
 
 Result:
 Thus, the program to display queue elements using linked list is verified successfully.
@@ -90,11 +218,56 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* front = NULL;
+struct Node* rear = NULL;
+
+void enqueue(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+    if (rear == NULL) {
+        front = rear = newNode;
+        return;
+    }
+    rear->next = newNode;
+    rear = newNode;
+}
+
+void display() {
+    if (front == NULL) {
+        printf("Queue is empty.\n");
+        return;
+    }
+    struct Node* p = front;
+    while (p != NULL) {
+        printf("%d ", p->data);
+        p = p->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    display();
+    return 0;
+}
+
+```
 
 Output:
+<img width="1634" height="730" alt="image" src="https://github.com/user-attachments/assets/40828ad2-6c84-4f31-9788-3ab779ece699" />
 
-//paste your output here
 
 Result:
 Thus, the program to insert elements in queue using linked list is verified successfully.
@@ -117,11 +290,52 @@ o	If the queue is not empty, return the data stored in the front node of the lin
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* front = NULL;
+struct Node* rear = NULL;
+
+void enqueue(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+    if (rear == NULL) {
+        front = rear = newNode;
+        return;
+    }
+    rear->next = newNode;
+    rear = newNode;
+}
+
+int peek() {
+    if (front == NULL) {
+        printf("Queue is empty.\n");
+        return -1;
+    }
+    return front->data;
+}
+
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    printf("Front element: %d\n", peek());
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
+<img width="1634" height="740" alt="image" src="https://github.com/user-attachments/assets/7b3253d1-91e2-44da-8aed-759168b703dc" />
+
 
 
 
